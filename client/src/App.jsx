@@ -1,6 +1,6 @@
 import 'normalize.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Register, Error, Landing } from './pages';
+import { Register, Error, Landing, ProtectedRoute } from './pages';
 import {
   AddJob,
   SharedLayout,
@@ -13,8 +13,15 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<SharedLayout />}>
-          <Route index path='stats' element={<Stats />} />
+        <Route
+          path='/'
+          element={
+            <ProtectedRoute>
+              <SharedLayout />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Stats />} />
           <Route path='all-jobs' element={<AllJobs />} />
           <Route path='add-job' element={<AddJob />} />
           <Route path='profile' element={<Profile />} />
