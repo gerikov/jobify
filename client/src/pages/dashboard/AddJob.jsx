@@ -18,6 +18,7 @@ const AddJob = () => {
     clearValues,
     isLoading,
     createJob,
+    editJob,
   } = useAppContext();
 
   const handleJobInput = (e) => {
@@ -35,7 +36,7 @@ const AddJob = () => {
     }
 
     if (isEditing) {
-      // editJob()
+      editJob();
       return;
     }
     createJob();
